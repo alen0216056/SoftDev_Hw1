@@ -1,4 +1,4 @@
-//global value
+//global variables
 button_id = [
 				["", "%", "CE", "c", "←", "/"], 
 				["A", "B", "7", "8", "9", "*"],
@@ -162,22 +162,30 @@ function press_button(button_value)
 	}
 	else if(button_value=="+" || button_value=="-" || button_value=="*" || button_value=="/" || button_value=="%")
 	{
-		if(number=="0")
+		if(display_formula=="" && number=="0")
 		{
-			if(button_value=="-")
-				number = "-";
-		}
-		else if(number.length==1 && number[0]=="-")
-		{
-			//number = "-"
+			display_formula = "0" + button_value;
+			real_formula = "0" + button_value;
 		}
 		else
 		{
-			display_formula = display_formula.concat(number);
-			real_formula = real_formula.concat(number_string(number));
-			display_formula = display_formula.concat(button_value);
-			real_formula = real_formula.concat(button_value);
-			number = "0";
+			if(number=="0")
+			{
+				if(button_value=="-")
+					number = "-";
+			}
+			else if(number.length==1 && number[0]=="-")
+			{
+				//number = "-"
+			}
+			else
+			{
+				display_formula = display_formula.concat(number);
+				real_formula = real_formula.concat(number_string(number));
+				display_formula = display_formula.concat(button_value);
+				real_formula = real_formula.concat(button_value);
+				number = "0";
+			}
 		}
 	}
 	else
