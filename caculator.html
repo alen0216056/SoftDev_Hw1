@@ -15,7 +15,7 @@
 	<link href="./css/caculator.css" type="text/css" rel="stylesheet">
 </head>
 
-<body>
+<body id="main">
 	<div id="caculator">
 		<div id="header">
 			<h1>
@@ -23,23 +23,34 @@
 			</h1>
 		</div>
 		<div id="result_body">
+			<h2 id="formula">
+				
+			<h2>
 			<h2 id="result">
 				0
 			</h2>
-			<h3 id="HEX_result">
-				<span>HEX</span>
+			<h3>
+				<span id="HEX_mode">HEX</span>
+			</h3>
+			<h3 id="HEX">
 				0
 			</h3>
-			<h3 id="DEC_result">
-				<span>DEC</span>
+			<h3>
+				<span id="DEC_mode">DEC</span>
+			</h3>
+			<h3 id="DEC">
 				0
 			</h3>
-			<h3 id="OCT_result">
-				<span>OCT</span>
+			<h3>
+				<span id="OCT_mode">OCT</span>
+			</h3>
+			<h3 id="OCT">
 				0
 			</h3>
-			<h3 id="BIN_result">
-				<span>BIN</span>
+			<h3>
+				<span id="BIN_mode">BIN</span>
+			</h3>
+			<h3 id="BIN">
 				0
 			</h3>
 		</div>
@@ -50,19 +61,19 @@
 						<button id=""></button>
 					</td>
 					<td>
-						<button id="Mod">Mod</button>
+						<button id="%">Mod</button>
 					</td>
 					<td>
 						<button id="CE">CE</button>
 					</td>
 					<td>
-						<button id="C">C</button>
+						<button id="c">C</button>
 					</td>
 					<td>
 						<button id="←">←</button>
 					</td>
 					<td>
-						<button id="%">%</button>
+						<button id="/">%</button>
 					</td>
 				</tr>
 				<tr>
@@ -149,5 +160,6 @@
 		</table>
 	</div>
 </body>
-
+<script src="./js/caculator.js"></script>
 </html>
+
