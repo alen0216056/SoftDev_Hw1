@@ -145,7 +145,7 @@ function press_button(button_value)
 		{
 			real_formula = real_formula.concat(number_string(number));
 		}
-		
+		real_formula = real_formula.replace("--", "+");
 		console.log(real_formula);
 		number = eval(real_formula).toString(base);
 		display_formula = "";
@@ -153,40 +153,47 @@ function press_button(button_value)
 	}
 	else if(button_value=="←")
 	{
-		number = number.substring(0, number.length-1);
+		if(base!=10 && number[0]=="-")
+		{
+			var tmp = (number&0xffff).toString(base);
+			number = tmp.substring(0, tmp.length-1);
+		}
+		else
+		{
+			number = number.substring(0, number.length-1);
+		}
 		if(number.length==0)
 			number = "0";
 	}
 	else if(button_value=="±")
 	{
-	}
-	else if(button_value=="+" || button_value=="-" || button_value=="*" || button_value=="/" || button_value=="%")
-	{
-		if(display_formula=="" && number=="0")
+		if(number[0]=="-")
 		{
-			display_formula = "0" + button_value;
-			real_formula = "0" + button_value;
+			if(number.length==1)
+				number = "0";
+			else
+				number = number.substring(1, number.length);
 		}
 		else
 		{
 			if(number=="0")
-			{
-				if(button_value=="-")
-					number = "-";
-			}
-			else if(number.length==1 && number[0]=="-")
-			{
-				//number = "-"
-			}
+				number = "-";
 			else
-			{
-				display_formula = display_formula.concat(number);
-				real_formula = real_formula.concat(number_string(number));
-				display_formula = display_formula.concat(button_value);
-				real_formula = real_formula.concat(button_value);
-				number = "0";
-			}
+				number = "-" + number;
 		}
+	}
+	else if(button_value=="+" || button_value=="-" || button_value=="*" || button_value=="/" || button_value=="%")
+	{
+		if(number.length==1 && number[0]=="-")
+		{
+			//number = "-"
+			number = "0";
+		}
+		display_formula = display_formula.concat(number);
+		real_formula = real_formula.concat(number_string(number));
+		display_formula = display_formula.concat(button_value);
+		real_formula = real_formula.concat(button_value);
+		number = "0";
 	}
 	else
 	{
